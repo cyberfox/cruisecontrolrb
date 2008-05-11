@@ -20,9 +20,11 @@ class BeanstalkScheduler
   
   def check_build_request_until_next_polling
     @project.build_if_requested
-    # Wait and the immediately delete this job.  We currently don't use job data.
-    @client.reserve.delete
-    @project.build
+    # Wait for the next job.  It will include the revision to build, so tell
+    # the builder to build that revision
+    job = @client.reserve
+    job.delete
+    @project.build Revision.new(job.body)
   end
 
   def same_error_as_before(error)
