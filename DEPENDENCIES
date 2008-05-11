@@ -4,6 +4,7 @@ You'll need Git:
  * http://git.or.cz/#download for instructions
 
 To the following gems:
- * grit
+ * mojombo-grit
+ * open4
  * mime-types
 
