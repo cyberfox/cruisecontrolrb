@@ -35,7 +35,7 @@
   </td>
 
   <td class="builder_control">
-    <% if Configuration.disable_build_now -%>
+    <% unless Configuration.disable_build_now -%>
       <div class="buttons">
         <% form_remote_tag(
              :url => { :action => 'build', :id => project },
