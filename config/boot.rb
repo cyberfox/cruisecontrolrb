@@ -1,41 +1,14 @@
 # Don't change this file. Configuration is done in config/environment.rb and config/environments/*.rb
 
-def find_home
-  ['HOME', 'USERPROFILE'].each do |homekey|
-    return ENV[homekey] if ENV[homekey]
-  end
-  if ENV['HOMEDRIVE'] && ENV['HOMEPATH']
-    return "#{ENV['HOMEDRIVE']}:#{ENV['HOMEPATH']}"
-  end
-  begin
-    File.expand_path("~")
-  rescue StandardError => ex
-    if File::ALT_SEPARATOR
-      "C:/"
-    else
-      "/"
-    end
-  end
-end
-
 unless defined?(RAILS_ROOT)
   root_path = File.join(File.dirname(__FILE__), '..')
 
-  unless RUBY_PLATFORM =~ /mswin32/
+  unless RUBY_PLATFORM =~ /(:?mswin|mingw)/
     require 'pathname'
     root_path = Pathname.new(root_path).cleanpath(true).to_s
   end
 
   RAILS_ROOT = root_path
-end
-
-unless defined? CRUISE_DATA_ROOT
-  if ENV['CRUISE_DATA_ROOT']
-    CRUISE_DATA_ROOT = ENV['CRUISE_DATA_ROOT']
-  else
-    CRUISE_DATA_ROOT = File.join(find_home, ".cruise")
-  end
-  puts "cruise data root = '#{CRUISE_DATA_ROOT}'"
 end
 
 unless defined?(Rails::Initializer)
@@ -53,7 +26,7 @@ unless defined?(Rails::Initializer)
       rails_gem = Gem.cache.search('rails', "~>#{version}.0").sort_by { |g| g.version.version }.last
 
       if rails_gem
-        require_gem "rails", "=#{rails_gem.version.version}"
+        gem "rails", "=#{rails_gem.version.version}"
         require rails_gem.full_gem_path + '/lib/initializer'
       else
         STDERR.puts %(Cannot find gem for Rails ~>#{version}.0:
@@ -63,7 +36,7 @@ unless defined?(Rails::Initializer)
         exit 1
       end
     else
-      require_gem "rails"
+      gem "rails"
       require 'initializer'
     end
   end

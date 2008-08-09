@@ -12,6 +12,33 @@ RAILS_GEM_VERSION = '1.2.3' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 ABSOLUTE_RAILS_ROOT = File.expand_path(RAILS_ROOT) unless defined? ABSOLUTE_RAILS_ROOT
 
+def find_home
+['HOME', 'USERPROFILE'].each do |homekey|
+  return ENV[homekey] if ENV[homekey]
+end
+if ENV['HOMEDRIVE'] && ENV['HOMEPATH']
+  return "#{ENV['HOMEDRIVE']}:#{ENV['HOMEPATH']}"
+end
+  begin
+    File.expand_path("~")
+  rescue StandardError => ex
+    if File::ALT_SEPARATOR
+      "C:/"
+    else
+      "/"
+    end
+  end
+end
+
+unless defined? CRUISE_DATA_ROOT
+  if ENV['CRUISE_DATA_ROOT']
+    CRUISE_DATA_ROOT = ENV['CRUISE_DATA_ROOT']
+  else
+    CRUISE_DATA_ROOT = File.join(find_home, ".cruise")
+  end
+  puts "cruise data root = '#{CRUISE_DATA_ROOT}'"
+end
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
 
