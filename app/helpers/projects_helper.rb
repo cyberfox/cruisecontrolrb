@@ -10,7 +10,7 @@ module ProjectsHelper
   end
 
   def rss_pub_date(build)
-    format_time(build ? build.time : Time.at(0), :rss)
+    time_ago_in_words(build ? build.time : Time.at(0), :rss)
   end
 
   def rss_link(project, build)
