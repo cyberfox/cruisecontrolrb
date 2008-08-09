@@ -24,7 +24,7 @@ class PollingScheduler
     time_to_go = Time.now + polling_interval
     while Time.now < time_to_go
       @project.build_if_requested
-      sleep build_request_checking_interval
+      sleep build_request_checking_interval.to_i
     end
   end
 

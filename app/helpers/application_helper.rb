@@ -1,13 +1,13 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-  # def format_time(time, format = :iso)
-  #   TimeFormatter.send(format, time)
-  # end
+  def format_time(time, format = :iso)
+    TimeFormatter.send(format, time)
+  end
   
-  # def format_seconds(total_seconds, format = :general)
-  #   DurationFormatter.new(total_seconds).send(format)
-  # end
+  def format_seconds(total_seconds, format = :general)
+    DurationFormatter.new(total_seconds).send(format)
+  end
   
   def setting_row(label, value, help = '&nbsp;')
     <<-EOL

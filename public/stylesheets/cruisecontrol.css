@@ -1,3 +1,5 @@
+/* @override http://localhost:3333/stylesheets/cruisecontrol.css?1218287453 */
+
 body {
   font-family: "Lucida Grande", "Lucida Sans", Verdana, Helvetica, Arial, sans-serif;
   font-size: .8em;
@@ -147,7 +149,7 @@ a.never_built, a.never_built:visited {
 }
 
 .project table.project_pane td.project_summary {
-  width: 15%;
+  width: 120px;
 }
 
 .project table.project_pane td.builder_control {
@@ -199,7 +201,7 @@ a.never_built, a.never_built:visited {
 .project .recent_builds .builds_list {
   float: left;
   position: relative;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   width: 95%;
 
 }
@@ -219,9 +221,13 @@ a.never_built, a.never_built:visited {
 .project .builder_control .builder_status_building, 
 .project .builder_control .builder_status_build_requested,
 .project .builder_control .builder_status_queued {
+	width: 110px;
+	height: 40px;
+	align: right;
+	text-align: right;
   font-weight: bold;
   padding-top: 5px;
-  padding-left: 25px;
+  padding-left: 45px;
   background-image: url(/images/spinner.gif);
   background-position: left;
   background-repeat: no-repeat;
