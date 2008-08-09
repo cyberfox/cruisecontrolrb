@@ -2,3 +2,5 @@ log
 log/*
 tmp
 tmp/*
+public/stylesheets/site.css
+public/builds

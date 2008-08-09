@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'grit'
+require 'mojombo-grit'
 
 class GitRevision < Revision
   attr_accessor :commit,:message

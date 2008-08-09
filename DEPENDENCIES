@@ -4,6 +4,9 @@ You'll need Git:
  * http://git.or.cz/#download for instructions
 
 To the following gems:
- * grit
+ * mojombo-grit
+ * open4
  * mime-types
 
+For a beanstalk-based notifier, you'll need the following:
+  * dustin-beanstalk-client
