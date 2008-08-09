@@ -4,12 +4,14 @@
 
   <td class="project_summary">
 
-    <div>
       <span class="project_name">
         <%= link_to project.name, :action => 'show', :id => project.name %>
+         <%= link_to image_tag('rss_light.gif'), :action => 'show', :id => project.name, :format => 'rss' %>
       </span>
-    </div>
+      <br>
+      <%= image_tag project.last_complete_build_status == 'success' ? 'big_ok' : 'big_error' %>
 
+      </td><td>
     <div class="recent_builds">
 
       <% recent_builds = project.last_five_builds %>
@@ -17,7 +19,7 @@
       <span class="lead">
         <%= recent_builds.first ? 'build ' : '<span class="build_status">Never built</span>' %>
         <br/>
-        <%= link_to image_tag('rss_light.gif'), :action => 'show', :id => project.name, :format => 'rss' %>
+       
       </span>
 
       <% unless recent_builds.empty? %>
@@ -26,7 +28,7 @@
             <% if build == recent_builds.first %>
                 <div class="build_summary"><%= link_to_build_with_elapsed_time(project, build) %></div>
             <% else %>
-                <div class="build_summary"><%= link_to_build(project, build) %></div>
+                <div class="build_summary"><%= link_to_build(project, build) %> <%= build.changeset %></div>
             <% end %>
           <% end %>
         </div>

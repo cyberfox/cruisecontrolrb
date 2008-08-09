@@ -147,15 +147,15 @@ a.never_built, a.never_built:visited {
 }
 
 .project table.project_pane td.project_summary {
-  width: 24%;
+  width: 15%;
 }
 
 .project table.project_pane td.builder_control {
-  width: 12%;
+  width: 2%;
 }
 
 .project table.project_pane td.build_details {
-  width: 64%;
+
 }
 
 .project .project_summary .buttons {
@@ -198,6 +198,10 @@ a.never_built, a.never_built:visited {
 
 .project .recent_builds .builds_list {
   float: left;
+  position: relative;
+  padding-bottom: 25px;
+  width: 95%;
+
 }
 
 .project .builder_control .builder_status_builder_down, 
