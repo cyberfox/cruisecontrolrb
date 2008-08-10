@@ -40,6 +40,7 @@ Available commands:
 
 CruiseControl.rb is a Continous Integration Server.
 For additional information, see http://cruisecontrolrb.rubyforge.org/
+For this fork information, see http://github.com/nofxx/cruisecontrolrb
     EOL
   elsif method_for_command(command)
     self.send(method_for_command(command))
@@ -55,7 +56,7 @@ def method_for_command(command)
   when 'start'                            then :start
   when 'add'                              then :add
   when 'build', 'builder'                 then :builder
-  when 'version', '-v', '--version'      then :version
+  when 'version', '-v', '--version'       then :version
   when 'help', '-h', '--help', '/?', '-?' then :help
   else nil
   end
@@ -64,7 +65,8 @@ end
 command = ARGV.shift
 if method_for_command(command)
   require 'fileutils'
-  FileUtils.cd(File.dirname(__FILE__)) do 
+  # fix for rails 2.1
+  FileUtils.cd(File.expand_path(File.dirname(__FILE__))) do 
     self.send(method_for_command(command))
   end
 elsif command.nil?

@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'mojombo-grit'
+require 'builder_error'
 
 class GitRevision < Revision
   attr_accessor :commit,:message
@@ -30,6 +31,8 @@ class Git
   include Grit
   include CommandLine
   
+  Grit.debug = true # tnx oculardisaster
+  
   attr_accessor :url, :path, :username, :password, :branch, :project
   
   def initialize(options = {})
@@ -48,6 +51,7 @@ class Git
     @repo ||= Repo.new("#{path}/.git")
   end
   
+  #FIXME RAILS 2.1
   def latest_revision
     revision = GitRevision.new(repo.commits(@branch).first)
     build = Build.new(@project,revision.number)
@@ -70,6 +74,7 @@ class Git
     end
   end
   
+  #FIXME RAILS 2.1
   def update(revision = nil)
     update_origin
     reset_from_remote

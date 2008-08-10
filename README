@@ -1,6 +1,6 @@
 == CruiseControl.rb
 
-This is a fork of the CruiseControl.rb fork that supports the GIT SCM.  
+This is a fork of the CruiseControl.rb fork that supports the GIT SCM.
 
 
 === What's this?
@@ -26,6 +26,14 @@ Type the following command to download the source
 git clone git://github.com/nofxx/cruisecontrolrb.git
 
 
+=== Install
+
+CruiseControl doesn`t require any kind of installation. 
+Just make sure you have:
+  * Ruby
+  * Rails > 2.1
+  
+  
 == GIT support:
 
 You'll need Git:
