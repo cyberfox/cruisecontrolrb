@@ -1,7 +1,3 @@
-/* @override http://localhost:3333/stylesheets/cruisecontrol.css?1218326425 */
-
-/* @override http://localhost:3333/stylesheets/cruisecontrol.css?1218287453 */
-
 body {
   font-family: "Lucida Grande", "Lucida Sans", Verdana, Helvetica, Arial, sans-serif;
   font-size: .8em;
@@ -143,6 +139,7 @@ a.never_built, a.never_built:visited {
 .project table.project_pane {
   padding-left: .75em;
   padding-bottom: .75em;
+  padding-top: 0.50em;
   width: 100%;
 }
 

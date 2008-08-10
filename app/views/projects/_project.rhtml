@@ -15,8 +15,8 @@
             <%= display_builder_state(project.builder_state_and_activity) %>
           </span>        
         </div>
-      <% unless Configuration.disable_build_now  -%>
         <div class="buttons">
+      <% unless Configuration.disable_build_now  -%>
           <% form_remote_tag(
                :url => { :action => 'build', :id => project },
                :before => "$('build_#{project.to_param}').disabled = true; " +
@@ -63,7 +63,6 @@
         </div>
       <% end %>
       <%# show_revisions_in_build(revisions_in_build(latest_build)) %>
-      <br>
       <% if latest_build.brief_error %>
         <div><%= link_to latest_build.brief_error, {:action => 'show', :id => project.name}, {:class => "failed"} %></div>
       <% end %>
