@@ -1,3 +1,7 @@
+/* @override http://localhost:3333/stylesheets/cruisecontrol.css?1218330072 */
+
+/* @override http://cc.fireho.com:3333/stylesheets/cruisecontrol.css?1218329501 */
+
 body {
   font-family: "Lucida Grande", "Lucida Sans", Verdana, Helvetica, Arial, sans-serif;
   font-size: .8em;
@@ -11,7 +15,14 @@ h3 {
   margin-top: .4em;
 }
 
-img { border-style: none; }
+img { border-style: none;
+ }
+
+#project_poignant table.project_pane tbody tr td.project_summary img {
+	padding-top: 5px;
+	padding-left: 5px;
+	margin-left: 15px;
+}
 
 a, a:link, a:visited { 
   color: #507ec0;
@@ -146,21 +157,14 @@ a.never_built, a.never_built:visited {
 .project table.project_pane td {
   vertical-align: top;
   text-align: left;
-
-
-	
-}
-
-div.builds_list {
-	width: 500px;
+	padding-top: 5px;
 }
 
 .project table.project_pane td.project_summary {
-
+	width: 130px;
 }
 
 .project table.project_pane td.builder_control {
-  width: 88%;
   text-align: right;
 }
 
@@ -246,11 +250,13 @@ div.builds_list {
 }
 
 .project .project_name {
-  padding: 0;
-  margin: 0;
   font-size: 2em;
   font-weight: normal;
+	margin-right: 36px;
+}
 
+#project_poignant table.project_pane tbody tr td.project_summary span.project_name a img {
+	margin: 0px;
 }
 
 /* Other classes */
