@@ -39,6 +39,7 @@ unless defined? CRUISE_DATA_ROOT
   puts "cruise data root = '#{CRUISE_DATA_ROOT}'"
 end
 
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
 
