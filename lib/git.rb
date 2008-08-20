@@ -128,10 +128,13 @@ class Git
   def execute_with_error_log(command, error_log)
     FileUtils.rm_f(error_log)
     FileUtils.touch(error_log)
+
     execute(command, :stderr => error_log) do |io| 
       result = io.readlines 
       begin 
         error_message = File.open(error_log){|f|f.read}.strip.split("\n")[1] || ""
+        error_message = "" unless error_message.include? 'fatal:'
+        puts "Errors: #{error_message.inspect}" unless error_message.blank?
       rescue
         error_message = ""
       ensure
